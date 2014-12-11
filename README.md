@@ -42,3 +42,9 @@
   * 小倉駅
   * 博多駅
 
+## 使用方法
+
+  cp dyt.config.sample dyt.config
+  # edit dyt.config to your account setting!
+  ./script/trace.pl
+
