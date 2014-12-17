@@ -2,6 +2,7 @@
 use strict;
 use AnyEvent::Twitter::Stream;
 use Config::PL;
+use utf8;
 
 my $done = AE::cv;
 
