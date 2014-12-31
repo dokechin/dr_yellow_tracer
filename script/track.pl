@@ -3,10 +3,17 @@ use strict;
 use AnyEvent::Twitter::Stream;
 use Config::PL;
 use utf8;
+use FindBin;
+BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
+use Dyt::DB;
+use Encode;
 
 my $done = AE::cv;
 
 my $config = config_do 'dyt.config';
+
+my $teng = Dyt::DB->new( $config->{db} );
+my @stations = $teng->search("Station");
 
 binmode STDOUT, ":utf8";
 
@@ -20,7 +27,13 @@ my $streamer = AnyEvent::Twitter::Stream->new(
     use_compression => 1,
     on_tweet => sub {
         my $tweet = shift;
-        print "$tweet->{user}{screen_name}: $tweet->{text}\n";
+        for my $station (@stations){
+            my $station_name = decode_utf8($station->name);
+            if ($tweet->{text} =~ /$station_name/){
+                $teng->insert("Look", {station_id => $station->id, looked_at => \"Now()"});
+                last;
+            }
+        }
     },
     on_error => sub {
         my $error = shift;

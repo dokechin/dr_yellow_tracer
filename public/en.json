@@ -1,0 +1,9 @@
+{
+  "No web audio support in this browser." : "No web audio support in this browser.",
+  "No getUserMedia support in this browser." : "No getUserMedia support in this browser.",
+  "File size over 4M." : "File size over 4M.",
+  "Please input title." : "Please input title.",
+  "Title length over 100 byte." : "Title length over 100 byte.",
+  "File upload failed, please retry again." : "File upload failed, please retry again.",
+  "Just a Moment ..." : "Just a Moment ..."
+}

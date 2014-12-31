@@ -1,0 +1,5 @@
+#!/bin/sh
+export MOJO_MODE=production
+export PLACK_ENV=production
+export PATH=$PATH:~/perl5/perlbrew/perls/perl-5.16.1/bin/
+exec /home/tatsumi/perl5/perlbrew/perls/perl-5.16.1/bin/start_server --port=8009 --interval=10 -- /home/tatsumi/perl5/perlbrew/perls/perl-5.16.1/bin/plackup -s Starlet --workers 5 -MFindBin -a /home/tatsumi/dyt/dyt.psgi

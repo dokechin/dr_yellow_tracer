@@ -1,0 +1,10 @@
+.table > tbody > tr > td.warning.hover,
+.table > tbody > tr > td.danger.hover
+{
+background-color: #FFFF00;
+}
+
+.title{
+  margin-right: 5px;
+}
+

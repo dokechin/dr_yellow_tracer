@@ -1,0 +1,46 @@
+% layout 'bootstrap';
+% title l 'title';
+% content_for head => begin
+% end
+<h1>目撃日時</h1>
+<% for my $look(@$looks) { %>
+<%= $look->{looked_at} %><br>
+<% } %>
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script type="text/javascript">
+google.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var container = document.getElementById('dyt');
+  var chart = new google.visualization.Timeline(container);
+  var dataTable = new google.visualization.DataTable();
+  dataTable.addColumn({ type: 'string', id: 'Role' });
+  dataTable.addColumn({ type: 'string', id: 'Name' });
+  dataTable.addColumn({ type: 'date', id: 'Start' });
+  dataTable.addColumn({ type: 'date', id: 'End' });
+  <% my $i = 0; %>
+  var chartData = [
+  <% for my $look(@$looks) { %>
+  <%= ($i > 0) ? "," : "" %>
+  [ 'Dr Yellow', '<%= $look->{name} %>' , 
+    new Date (0,0,0, <%= $look->{start_hh} %>, <%= $look->{start_mi} %>, 0), 
+    new Date (0,0,0, <%= $look->{end_hh} %>,   <%= $look->{end_mi}   %>, 0) ] 
+  <% $i = $i + 1; %>
+  <% } %>
+  ];
+
+  dataTable.addRows(chartData);
+
+  var options = {
+  };
+
+  chart.draw(dataTable, options);
+}
+
+</script>
+
+<div id="dyt" style="width: 900px; height: 150px;"></div>
+
+<a href="/">戻る</a>

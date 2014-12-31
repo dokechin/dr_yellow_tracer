@@ -1,0 +1,10 @@
+% layout 'bootstrap';
+% title l 'title';
+% content_for head => begin
+% end
+<h1><%= l 'title' %></h1>
+<p><%= l 'description' %></p>
+<% for my $date(@$dates) { %>
+<a href="/detail/<%= $date->{date} %>"><%= $date->{date} %></a>
+<% } %>
+

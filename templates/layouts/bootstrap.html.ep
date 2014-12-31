@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta property="og:title" content="<%= l 'title' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="<%= l 'description' %>" />
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="<%= url_for("/css/font-awesome.min.css") %>" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="<%= url_for("/css/application.css") %>" />
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <%= content 'head' %>
+  </head>
+  <body>
+    <div class="container">
+      <%= content %> 
+      <hr>
+      <footer id="footer">
+        <p>&copy; @dokechin 2014 </p>
+      </footer>
+    </div><!--/.container-->
+  </body>
+</html>

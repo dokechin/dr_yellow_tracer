@@ -1,0 +1,9 @@
+{
+  "No web audio support in this browser." : "このブラウザではWebAudioがサポートされていません。",
+  "No getUserMedia support in this browser." : "このブラウザではgetUserMediaがサポートされていません。",
+  "File size over 4M." : "ファイルサイズが4Mを超えました。",
+  "Please input title." : "タイトルを入力してください。",
+  "Title length over 100 byte." : "タイトル文字列が100文字を超えました。",
+  "File upload failed, please retry again." : "ファイルアップロードに失敗しました",
+  "Just a Moment ..." : "お待ちください ..."
+}
