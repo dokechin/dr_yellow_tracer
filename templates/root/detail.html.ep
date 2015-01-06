@@ -26,7 +26,7 @@ function drawChart() {
   <%= ($i > 0) ? "," : "" %>
   [ 'Dr Yellow', '<%= $look->{name} %>' , 
     new Date (0,0,0, <%= $look->{start_hh} %>, <%= $look->{start_mi} %>, 0), 
-    new Date (0,0,0, <%= $look->{end_hh} %>,   <%= $look->{end_mi}   %>, 0) ] 
+    new Date (0,0,0, <%= $look->{end_hh} %>,   <%= $look->{end_mi}   %>, 59) ] 
   <% $i = $i + 1; %>
   <% } %>
   ];

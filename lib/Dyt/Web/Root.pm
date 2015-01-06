@@ -43,17 +43,25 @@ sub detail {
       $first = 0;
     }
     else{
-      if ($data->name ne $station->name){
-        $data->{end_hh} = $look->looked_at->hour();
-        $data->{end_mi} = $look->looked_at->minute();
+      if ($data->{name} ne $station->name){
+        if ( !defined $data->{end_hh}){
+          $data->{end_hh} = $data->{start_hh};
+          $data->{end_mi} = $data->{start_mi};
+        }
         push @looks, $data;
         $data = {name => $station->name, start_hh=> $look->looked_at->hour(), start_mi => $look->looked_at->minute()};
+      }
+      else{
+        $data->{end_hh} = $look->looked_at->hour();
+        $data->{end_mi} = $look->looked_at->minute();
       }
     }
   }
 
-  $data->{end_hh} = 23;
-  $data->{end_mi} = 59;
+  if ( !defined $data->{end_hh}){
+    $data->{end_hh} = $data->{start_hh};
+    $data->{end_mi} = $data->{start_mi};
+  }
   push @looks, $data;
 
   $self->stash(looks => \@looks);
