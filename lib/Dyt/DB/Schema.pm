@@ -5,7 +5,7 @@ use DateTime::Format::MySQL;
     table {
         name 'Look';
         pk id;
-        columns qw( id looked_at station_id);
+        columns qw( id looked_at text station_id);
 
         inflate qr/.+_at/ => sub {
             my $value = shift;

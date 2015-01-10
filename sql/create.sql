@@ -13,6 +13,7 @@ USE `dyt` ;
 CREATE  TABLE IF NOT EXISTS `dyt`.`Look` (
       id bigint not null auto_increment,
       station_id bigint,
+      text text,
       looked_at  datetime,
       primary key (id),
       index(looked_at)
@@ -64,3 +65,5 @@ insert into dyt.Station (id,name,km) values
  (32, 'V‰ºŠÖ‰w', 992.5),
  (33, '¬‘q‰w', 1013.2),
  (34, '”Ž‘½‰w', 1069.1);
+
+alter table dyt.Look add text text;

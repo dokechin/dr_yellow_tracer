@@ -27,13 +27,15 @@ my $streamer = AnyEvent::Twitter::Stream->new(
     use_compression => 1,
     on_tweet => sub {
         my $tweet = shift;
-        for my $station (@stations){
-            my $station_name = decode_utf8($station->name);
-            if ($tweet->{text} =~ /$station_name/){
-                $teng->insert("Look", {station_id => $station->id, looked_at => \"Now()"});
-                last;
+        if ($tweet->{retweeted} eq "false"){
+            for my $station (@stations){
+                my $station_name = decode_utf8($station->name);
+                if ($tweet->{text} =~ /$station_name/){
+                    $teng->insert("Look", {station_id => $station->id, text => $tweet->{text} , looked_at => \"Now()"});
+                    last;
+                }
             }
-        }
+         }
     },
     on_error => sub {
         my $error = shift;
